@@ -7,4 +7,4 @@ Using Convolution Q-Learning to allow me to pass a level of Doom
 ## Resources
 [PyTourch Documenation](https://pytorch.org/docs/master/)
 
-[OpenAI Gym](https://gym.openai.com/envs/DoomBasic-v0)
+[OpenAI Gym](https://gym.openai.com/envs/DoomCorridor-v0)
