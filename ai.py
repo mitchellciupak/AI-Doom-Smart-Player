@@ -86,6 +86,13 @@ class AI:
 doom_env = image_preprocessing.PreprocessImage(SkipWrapper(4)(ToDiscrete("minimal")(gym.make("ppaquette/DoomCorridor-v0"))), width = 80, height = 80, grayscale = True)
 doom_env = gym.wrappers.Monitor(doom_env, "videos", force = True)
 number_actions = doom_env.action_space.n
+
+##Init Auto Player Objects
+cnn = CNN(number_actions)
+softMaxPlayer= SoftMaxPlayer(T = 1.0) #Small Temp
+ai = AI(brain = cnn, body = softmax_body)
+
+
     
     
     
