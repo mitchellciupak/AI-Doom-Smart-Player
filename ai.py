@@ -31,5 +31,14 @@ class CNN(nn.Module):
         self.convolution1 = nn.Conv2d(in_channels = 1, out_channels = 32, kernel_size = 5) # 1 Black and White image, 32 detected features, 5x5 feature detector 
         self.convolution2 = nn.Conv2d(in_channels = 32, out_channels = 32, kernel_size = 3) # In channels are now out channels of last convolution connection 
         self.convolution3 = nn.Conv2d(in_channels = 32, out_channels = 64, kernel_size = 2)
-        self.fc1 = nn.Linear(in_features = number_neurons, out_features = 40)
-        self.fc2 = nn.Linear(in_features = 40, out_features = numver_actions)
+        self.fc1 = nn.Linear(in_features = self.count_neurons((1,, 80, 80)), out_features = 40)
+        self.fc2 = nn.Linear(in_features = 40, out_features = number_actions)
+        
+    def count_neurons(self, image_dim):
+        # image_dim = tuple of image demensions
+        
+        x = Variable(torch.rand(1, *image_dim))
+        x = F.relu(F.max_pool2d(self.convolution1(x), 3, 2)) # Max Pooling with 3 Kernel Size, 2 Strides
+        x = F.relu(F.max_pool2d(self.convolution2(x), 3, 2)) # Max Pooling with 3 Kernel Size, 2 Strides
+        x = F.relu(F.max_pool2d(self.convolution3(x), 3, 2)) # Max Pooling with 3 Kernel Size, 2 Strides
+        return x.data.view(1, -1).size(1) #Size of neuron array
