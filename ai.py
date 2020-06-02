@@ -23,7 +23,6 @@ from ppaquette_gym_doom.wrappers.action_space import ToDiscrete
 import experience_replay, image_preprocessing
 
 # Create CNN
-## Class Init
 class CNN(nn.Module):
     
     def _init_(self, number_actions):
@@ -51,4 +50,11 @@ class CNN(nn.Module):
         x = F.relu(slef.fc1(x))
         x = self.fc2(x)
         return x
-        
+    
+# Create Player 
+
+class SoftMaxPlayer(nn.Module):
+    
+    def _init_(self, T):
+        super(SoftMaxPlayer, self).__init__()
+        self.T = T
