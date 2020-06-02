@@ -6,7 +6,7 @@ Using Convolution Q-Learning to allow me to pass a level of Doom
 2. Download OVA in Resources Below
 3. Place OVA in root directory
 4. Run 'ai.py'
-5. Enjoy
+5. Enjoy playthroughs in video file
 
 ## Resources
 [PyTourch Documenation](https://pytorch.org/docs/master/)
