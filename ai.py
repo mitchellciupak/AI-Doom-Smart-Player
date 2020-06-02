@@ -58,3 +58,11 @@ class SoftMaxPlayer(nn.Module):
     def _init_(self, T):
         super(SoftMaxPlayer, self).__init__()
         self.T = T
+    
+    def forward(self outputs):
+        probs = F.softmax(outputs * self.T)
+        actions = probs.multinomial()
+        return actions
+    
+# Create AI
+        
