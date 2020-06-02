@@ -42,3 +42,13 @@ class CNN(nn.Module):
         x = F.relu(F.max_pool2d(self.convolution2(x), 3, 2)) # Max Pooling with 3 Kernel Size, 2 Strides
         x = F.relu(F.max_pool2d(self.convolution3(x), 3, 2)) # Max Pooling with 3 Kernel Size, 2 Strides
         return x.data.view(1, -1).size(1) #Size of neuron array
+    
+    def forward(self x):
+        x = F.relu(F.max_pool2d(self.convolution1(x), 3, 2)) 
+        x = F.relu(F.max_pool2d(self.convolution2(x), 3, 2)) 
+        x = F.relu(F.max_pool2d(self.convolution3(x), 3, 2)) 
+        x = x.view(x.size(0), -1) # Flatten multi channel convolution
+        x = F.relu(slef.fc1(x))
+        x = self.fc2(x)
+        return x
+        
