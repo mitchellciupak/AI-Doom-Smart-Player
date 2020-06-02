@@ -92,8 +92,9 @@ cnn = CNN(number_actions)
 softMaxPlayer= SoftMaxPlayer(T = 1.0) #Small Temp
 ai = AI(brain = cnn, body = softMaxPlayer)
 
-
-    
+##Init Expericne Replay
+n_steps = experience_replay.NStepProgress(env = doom_env, ai = ai, n_step = 10) #Learn every 10 transitions
+memory = experience_replay.ReplayMemory(n_steps = n_steps, capacity = 10000)
     
     
         
