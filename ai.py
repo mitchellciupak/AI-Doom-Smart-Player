@@ -87,16 +87,16 @@ doom_env = image_preprocessing.PreprocessImage(SkipWrapper(4)(ToDiscrete("minima
 doom_env = gym.wrappers.Monitor(doom_env, "videos", force = True)
 number_actions = doom_env.action_space.n
 
-##Init Auto Player Objects
+## Init Auto Player Objects
 cnn = CNN(number_actions)
 softMaxPlayer= SoftMaxPlayer(T = 1.0) #Small Temp
 ai = AI(brain = cnn, body = softMaxPlayer)
 
-##Init Expericne Replay
+## Init Expericne Replay
 n_steps = experience_replay.NStepProgress(env = doom_env, ai = ai, n_step = 10) #Learn every 10 transitions
 memory = experience_replay.ReplayMemory(n_steps = n_steps, capacity = 10000)
 
-##Init Eligibilty Trace
+## Init Eligibilty Trace
 def eligibility_trace(batch):
     gamma = 0.99
     inputs = []
@@ -119,5 +119,20 @@ def eligibility_trace(batch):
         
     return torch.from_numpy(np.array(inputs, dtype = np.float32)), torch.stack(targets)
     
-    
+ ## Init Moving Average (100 steps)
+class MA:
+    def __init__(self, size):
+        self.list_of_rewards = []
+        self.size = size
+    def add(self, rewards):
+        if isinstance(rewards, list):
+            self.list_of_rewards += rewards
+        else:
+            self.list_of_rewards.append(rewards)
+        while len(self.list_of_rewards) > self.size:
+            del self.list_of_rewards[0]
+    def average(self):
+        return np.mean(self.list_of_rewards)
+
+ma = MA(100)  
         
