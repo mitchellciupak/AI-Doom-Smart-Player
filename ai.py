@@ -156,7 +156,7 @@ for epoch in range(1, nb_epochs + 1):
     ma.add(rewards_steps)
     avg_reward = ma.average()
     print("Epoch: %s, Average Reward: %s" % (str(epoch), str(avg_reward)))
-    if avg_reward >= 1500:
+    if avg_reward >= 1200:
         print("The AI Wins!")
         break
 
