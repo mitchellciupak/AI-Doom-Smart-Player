@@ -21,3 +21,15 @@ from ppaquette_gym_doom.wrappers.action_space import ToDiscrete
 
 ## Importing the other Python files
 import experience_replay, image_preprocessing
+
+# Create CNN
+## Class Init
+class CNN(nn.Module):
+    
+    def _init_(self, number_actions):
+        super(CNN, self).__init__()
+        self.convolution1
+        self.convolution2
+        self.convolution3
+        self.fc1
+        self.fc2
