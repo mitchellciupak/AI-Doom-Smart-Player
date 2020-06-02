@@ -90,7 +90,7 @@ number_actions = doom_env.action_space.n
 ##Init Auto Player Objects
 cnn = CNN(number_actions)
 softMaxPlayer= SoftMaxPlayer(T = 1.0) #Small Temp
-ai = AI(brain = cnn, body = softmax_body)
+ai = AI(brain = cnn, body = softMaxPlayer)
 
 
     
