@@ -119,7 +119,7 @@ def eligibility_trace(batch):
         
     return torch.from_numpy(np.array(inputs, dtype = np.float32)), torch.stack(targets)
     
- ## Init Moving Average (100 steps)
+## Create Moving Average (100 steps)
 class MA:
     def __init__(self, size):
         self.list_of_rewards = []
@@ -134,5 +134,6 @@ class MA:
     def average(self):
         return np.mean(self.list_of_rewards)
 
+## Init Moving Average (100 steps)
 ma = MA(100)  
         
