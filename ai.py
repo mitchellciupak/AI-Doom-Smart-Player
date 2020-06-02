@@ -65,4 +65,18 @@ class SoftMaxPlayer(nn.Module):
         return actions
     
 # Create AI
+
+class AI:
+    def _init_(self, brain, body):
+        self.brain = brain
+        self.body = body
+        
+    def forward:
+        return 0
+    
+    
+    
+    
+    
+    
         
