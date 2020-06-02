@@ -71,10 +71,14 @@ class AI:
         self.brain = brain
         self.body = body
         
-    def forward:
-        return 0
-    
-    
+    def __call__(self, inputs):
+        # Convert Images into Torch Structure
+        input = Variable(tourch.from_numpy(np.array(inputs, dtype = np.float32)))
+        
+        # Propegate signals
+        output = self.brain(input)
+        actions = self.body(output)
+        return actions.data.numpy()
     
     
     
