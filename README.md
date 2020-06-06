@@ -7,6 +7,7 @@ Using Convolution Q-Learning to allow me to pass a level of Doom
 3. Place .ova in root directory
 4. Run 'ai.py'
 5. Enjoy playthroughs in video file that can be highlighted by the example below
+
 ![](nn.gif)
 
 
